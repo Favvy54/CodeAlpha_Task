@@ -35,81 +35,79 @@ button.active{
   color: #fff;
 }
 
+button.hover{
+ background-color: #1F7CE3;
+ transform: translateY(0.9);
+}
+
 
 .image-gallery{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 20px;
-  /*overflow: auto;*/
   margin-top: 30px;
   margin-left: 30px;
   margin-right: 50px;
 }
 
 .explore-items{
-  background: #fff;
-  border-radius: 10px;
-  border: none;
-  padding: 3px;
+  transition: transform 0.4s;
+  position: relative;
+  overflow: hidden;
 }
 
 .explore-items.hide{
   display: none;
 }
 .explore-items:hover{
-  transform: scale(0.9) rotate(-15deg);
+  transform: scale(1.1);
 }
 
-.explore-items {
-  transition: transform 0.3s ease;
-}
 
 
 .explore-items img {
   border: none;
-  border-radius: 10px 10px 0 0 ;
-  width: 280px;
+  border-radius: 10px;
+  width: 100%;
   height: 260px;
+  object-fit: cover;
 }
-/*.explore-items img:hover{
-  transform: scale(0.9) rotate(-15deg);
-}*/
 
 
 .description{
-  padding: 20px;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(rgba(0, 88, 255, 0.5), #8ccfff);
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  transition: height 0.5s ease;
+  color: #fff;
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.explore-items:hover .description{
+  height: 50%;
+}
 
 
 /* Responsiveness */
 @media screen and (max-width:425px){
  .image-gallery{
   display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   
 }
 .explore-items img {
   border: none;
-  border-radius: 10px 10px 0 0 ;
+  border-radius: 10px ;
   width: 100%;
 
 }
-
-.explore-items:hover{
-  transform: scale(0.7) rotate(-15deg);
-}
-
 }

@@ -4,7 +4,26 @@
   box-sizing: border-box;
 }
 
-/*Header Section Styling */
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+main {
+  flex: 1;
+}
+
+/* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
@@ -12,6 +31,7 @@ header {
   background-color: #fff;
   padding: 10px 20px;
   margin: 10px 14px;
+  position: relative;
 }
 
 .names h3 {
@@ -20,16 +40,44 @@ header {
   font-family: Console, monospace;
 }
 
-/*nav-list Styling*/
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+}
 
-.nav-list  {
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Nav list Styling */
+.nav-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
 }
 
-/* List-link Styling*/
-
+/* List-link Styling */
 .list {
   display: flex;
   align-items: center;
@@ -37,18 +85,21 @@ header {
   list-style-type: none;
 }
 
-/*Link Styling*/
-
-.a {
+/* Link Styling */
+nav ul li a {
   color: #000;
   text-decoration: none;
   font-size: 18px;
   padding: 10px 20px;
+  transition: color 0.3s ease;
 }
 
-/*Button Styling*/
+nav ul li a:hover {
+  color: #666;
+}
 
-.hire-btn{
+/* Button Styling */
+.hire-btn {
   background-color: #000;
   color: #fff;
   border: none;
@@ -57,7 +108,14 @@ header {
   cursor: pointer;
   outline: none;
   text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: 20px;
 }
+
+.hire-btn:hover {
+  background-color: #333;
+}
+
 
 .hero-section {
   background-color: #f5f5f5;
@@ -72,7 +130,7 @@ header {
   margin: 0 auto;
   gap: 40px;
   max-width: 1100px;
- 
+  
 }
 
 .about-img img {
@@ -85,6 +143,7 @@ header {
   margin: 0 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 /* Bio */
 
 .about-content {
@@ -191,6 +250,7 @@ img:hover {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  
 }
 
 .card h3 {
@@ -205,7 +265,72 @@ img:hover {
   line-height: 1.5;
 }
 
+.learning-journey-section {
+  background-color: #111;
+  /* Dark background to match branding */
+  color: #f1f1f1;
+  /* Light text for contrast */
+  padding: 60px 40px;
+  margin: 80px 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
 
+.section-header h2 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 32px;
+}
+
+.journey-body {
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.journey-body h3 {
+  font-size: 20px;
+  margin: 20px 0 10px;
+  color: #4dd0e1;
+  /* Accent color for section titles */
+}
+
+.explore-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.explore-list li {
+  background-color: #1a1a1a;
+  border-left: 4px solid #4dd0e1;
+  /* Accent border */
+  padding: 16px 20px;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.explore-list li:hover {
+  background-color: #222;
+}
+
+.journey-body blockquote {
+  font-style: italic;
+  background-color: #1a1a1a;
+  padding: 20px;
+  margin-top: 30px;
+  border-left: 4px solid #4dd0e1;
+  border-radius: 8px;
+  color: #ccc;
+}
 
 
 footer {
@@ -267,24 +392,48 @@ footer {
     flex-direction: column;
     text-align: center;
   }
+  
   .footer-left,
   .footer-center,
   .footer-right {
     margin: 10px 0;
   }
+  
   .footer-nav {
     flex-direction: column;
     gap: 10px;
   }
+  
   .social-links a {
     display: inline-block;
     margin: 5px 10px;
   }
+  
+  .links {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .links.active {
+    display: flex;
+  }
+  
+  .hamburger {
+    display: block;
+  }
 }
 
 
+
 /* On small screens, stack vertically */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .about-container {
     flex-direction: column;
     text-align: center;
@@ -292,5 +441,110 @@ footer {
   
   .about-content {
     padding-top: 20px;
+  }
+  
+  .learning-journey-section {
+    padding: 30px 20px;
+    margin: 60px 16px;
+  }
+  
+  .section-header h2 {
+    font-size: 24px;
+  }
+  
+  .section-header p {
+    font-size: 14px;
+  }
+  
+  .journey-body {
+    font-size: 15.5px;
+  }
+  
+  .journey-body h3 {
+    font-size: 18px;
+  }
+  
+  .explore-list {
+    grid-template-columns: 1fr;
+    /* Single column for smaller screens */
+    gap: 12px;
+  }
+  
+  .explore-list li {
+    padding: 12px 16px;
+  }
+  
+  .journey-body blockquote {
+    font-size: 15px;
+    padding: 16px;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-list {
+    position: fixed;
+    top: 70px;
+    left: -280px;
+    width: 280px;
+    height: calc(100vh - 70px);
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: left 0.3s ease;
+    padding-top: 30px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .nav-list.active {
+    left: 0;
+  }
+  
+  .list {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .list li {
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+  }
+  
+  .hire-btn {
+    margin: 30px 0;
+    margin-left: 0;
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 20px;
+  }
+  
+  .journey-body h3 {
+    font-size: 16px;
+  }
+  
+  .explore-list li {
+    font-size: 14.5px;
+    border-left-width: 3px;
+  }
+  
+  .journey-body blockquote {
+    font-size: 14px;
   }
 }

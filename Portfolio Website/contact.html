@@ -6,31 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
   <link rel="stylesheet" href="contact.css">
-  <link
+  <!--link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
+/>-->
 </head>
 
 <body>
-  
-    <header>
+  <header>
     <div class="names">
       <h3>Favour</h3>
     </div>
-    <!--Nav list-->
-    <div class="nav-list">
+    
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- Nav list -->
+    <div class="nav-list" id="navList">
       <nav>
         <ul class="list">
-          <li><a href="index.html" class="a" target="_blank">Home</a></li>
-          <li><a href="about.html"class="a" target="_blank">About</a></li>
-          <li><a href="services.html"class="a" target="_blank">Services</a></li>
-          <li><a href="contact.html"class="a" target="_blank">Contact</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="about.html" target="_blank">About</a></li>
+          <li><a href="services.html" target="_blank">Services</a></li>
+          <li><a href="contact.html" target="_blank">Contact</a></li>
         </ul>
       </nav>
       <a href="contact.html" class="hire-btn">Hire Me</a>
     </div>
   </header>
+  
+  
   <!-- Hero-section -->
   <main>
     <section>
@@ -40,44 +49,48 @@
       <h2>Contact Me</h2>
       <p>Intrested in working together or have questions? Let's Connect</p>
       <div class="form-page">
-      <form onsubmit="alert('Message Sent')" action="https://formspree.io/f/xnndkjnv" method="POST" accept-charset="utf-8">
-        <label for=""></label> <br> <br>
-        <input type="text" name="name" placeholder="Your Name" required> <br> <br >
-        <input type="email" name="email" placeholder="Your Email" required> <br> <br>
-        <textarea name="" id= rows="20" cols="26" placeholder="Your Message here... "></textarea> <br> <br>
-        <button class="button" type="submit">Send Message</button>
-      </form>
+        <form onsubmit="alert('Message Sent')" action="https://formspree.io/f/xnndkjnv" method="POST" accept-charset="utf-8">
+          <label for=""></label> <br> <br>
+          <input type="text" name="name" placeholder="Your Name" required> <br> <br>
+          <input type="email" name="email" placeholder="Your Email" required> <br> <br>
+          <textarea name="" id=rows="20" cols="26" placeholder="Your Message here... "></textarea> <br> <br>
+          <button class="button" type="submit">Send Message</button>
+        </form>
       </div>
     </section>
   </main>
   
   <footer>
-  <div class="footer-container">
-    <div class="footer-left">
-      <p>© 2025 Favour. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p> &copy 2025 Favour. All rights reserved.</p>
+      </div>
+      <div class="footer-center">
+        <nav>
+          <ul class="footer-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+      </div>
     </div>
-    <div class="footer-center">
-      <nav>
-        <ul class="footer-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-<div class="social-links">
-  <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
-    <i class="fab fa-linkedin fa-2x"></i>
-  </a>
-  <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">
-    <i class="fab fa-github fa-2x"></i>
-  </a>
-  <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" aria-label="Twitter">
-    <i class="fab fa-twitter fa-2x"></i>
-  </a>
-</div>
-  </div>
-</footer>
+  </footer>
+  
+  
+  <script src="contact.js"></script>
 </body>
+
 </html>

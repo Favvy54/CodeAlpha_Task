@@ -1,86 +1,99 @@
+const display = document.getElementById('display');
 
-let firstNumber = '';
-    let secondNumber = '';
-    let operator = '';
-    let resultDisplayed = false;
+let equation = ''; // This holds the full equation
+let shouldResetDisplay = false; // Track if we just showed a result
 
-    function appendNumber(num) {
-      const display = document.getElementById('display');
-
-      // Reset display after showing result
-      if (resultDisplayed) {
-        display.value = '';
-        firstNumber = '';
-        secondNumber = '';
-        operator = '';
-        resultDisplayed = false;
-      }
-
-      // Prevent multiple decimals in the same number
-      if (num === '.') {
-        if (!operator && firstNumber.includes('.')) return;
-        if (operator && secondNumber.includes('.')) return;
-      }
-
-      display.value += num;
-
-      if (!operator) {
-        firstNumber += num;
-      } else {
-        secondNumber += num;
-      }
+// Append number or decimal to the equation
+function appendNumber(number) {
+    // If result is being shown, reset for a new equation
+    if (shouldResetDisplay) {
+        equation = '';
+        shouldResetDisplay = false;
     }
-
-    function setOperator(op) {
-      const display = document.getElementById('display');
-
-      if (firstNumber === '') return;
-
-      if (operator === '') {
-        // Convert visible operator to real JS operator
-        operator = (op === '×') ? '*' :
-                   (op === '÷') ? '/' :
-                   (op === '−') ? '-' :
-                   op;
-
-        display.value += op;
-      }
+    
+    // Prevent multiple decimals in a row
+    const lastToken = equation.split(/[\+\-\×\÷]/).pop();
+    if (number === '.' && lastToken.includes('.')) {
+        return;
     }
+    
+    equation += number;
+    display.value = equation;
+}
 
-    function calculate() {
-      const display = document.getElementById('display');
-      const num1 = parseFloat(firstNumber);
-      const num2 = parseFloat(secondNumber);
-      let result = 0;
+// Set the operator and update the equation
+function setOperator(op) {
+    if (equation === '') return;
+    
+    const lastChar = equation.slice(-1);
+    
+    // Prevent multiple operators
+    if (['+', '-', '×', '÷'].includes(lastChar)) return;
+    
+    equation += op;
+    display.value = equation;
+    shouldResetDisplay = false;
+}
 
-      switch (operator) {
-        case '+':
-          result = num1 + num2;
-          break;
-        case '-':
-          result = num1 - num2;
-          break;
-        case '*':
-          result = num1 * num2;
-          break;
-        case '/':
-          result = (num2 !== 0) ? num1 / num2 : 'Error';
-          break;
-        default:
-          result = 'Invalid';
-      }
-
-      display.value = result;
-      firstNumber = '';
-      secondNumber = '';
-      operator = '';
-      resultDisplayed = true;
+// Calculate and show result
+function calculate() {
+    if (equation === '') return;
+    
+    // Replace display symbols with actual operators
+    const expression = equation
+        .replace(/×/g, '*')
+        .replace(/÷/g, '/')
+        .replace(/–/g, '-');
+    
+    try {
+        const result = eval(expression);
+        display.value = parseFloat(result.toFixed(10)).toString();
+        equation = display.value; // Set result as new base for next input
+        shouldResetDisplay = true;
+    } catch (e) {
+        display.value = 'Error';
+        equation = '';
+        shouldResetDisplay = true;
     }
+}
 
-    function clearDisplay() {
-      document.getElementById('display').value = '';
-      firstNumber = '';
-      secondNumber = '';
-      operator = '';
-      resultDisplayed = false;
+// Clear all
+function clearDisplay() {
+    equation = '';
+    display.value = '';
+    shouldResetDisplay = false;
+}
+
+// Delete last character
+function deleteLast() {
+    if (shouldResetDisplay) return; // Disable delete after result shown
+    equation = equation.slice(0, -1);
+    display.value = equation;
+}
+
+// Keyboard input
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    
+    if (/[0-9]/.test(key)) {
+        appendNumber(key);
+    } else if (key === '.') {
+        appendNumber('.');
+    } else if (key === '+') {
+        setOperator('+');
+    } else if (key === '-') {
+        setOperator('-');
+    } else if (key === '*') {
+        setOperator('×');
+    } else if (key === '/') {
+        event.preventDefault();
+        setOperator('÷');
+    } else if (key === 'Enter' || key === '=') {
+        event.preventDefault();
+        calculate();
+    } else if (key === 'Escape') {
+        clearDisplay();
+    } else if (key === 'Backspace') {
+        deleteLast();
     }
+});

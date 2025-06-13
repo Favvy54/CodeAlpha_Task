@@ -12,7 +12,7 @@ body {
   color: #333;
 }
 
-/*Header Section Styling */
+/* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
@@ -20,6 +20,7 @@ header {
   background-color: #fff;
   padding: 10px 20px;
   margin: 10px 14px;
+  position: relative;
 }
 
 .names h3 {
@@ -28,16 +29,44 @@ header {
   font-family: Console, monospace;
 }
 
-/*nav-list Styling*/
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+}
 
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #000;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Nav list Styling */
 .nav-list {
   display: flex;
   justify-content: end;
   align-items: center;
 }
 
-/* List-link Styling*/
-
+/* List-link Styling */
 .list {
   display: flex;
   align-items: center;
@@ -45,20 +74,21 @@ header {
   list-style-type: none;
 }
 
-/*Link Styling*/
-
+/* Link Styling */
 nav ul li a {
   color: #000;
   text-decoration: none;
   font-size: 18px;
   padding: 10px 20px;
+  transition: color 0.3s ease;
 }
 
+nav ul li a:hover {
+  color: #666;
+}
 
-
-/*Button Styling*/
-
-.hire-btn{
+/* Button Styling */
+.hire-btn {
   background-color: #000;
   color: #fff;
   border: none;
@@ -67,52 +97,62 @@ nav ul li a {
   cursor: pointer;
   outline: none;
   text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: 20px;
 }
 
+.hire-btn:hover {
+  background-color: #333;
+}
 
 /*Hero-section*/
 
-.hero-section{
-  background-color:#000;
+.hero-section {
+  background-color: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 }
-.img{
+
+.img {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-img{
+
+img {
   width: 400px;
   height: 700px;
   object-fit: cover;
 }
 
-.text{
+.text {
   align-content: center;
   padding: 60px 50px 30px 20px;
 }
-.text h2{
- font-size: 40px;
+
+.text h2 {
+  font-size: 40px;
   color: #fff;
   padding-bottom: 18px;
   padding-left: 70px;
 }
-.text p{
+
+.text p {
   font-size: 30px;
   color: #fff;
-  padding-bottom:16px;
+  padding-bottom: 16px;
   padding-left: 70px;
 }
-.explore{
+
+.explore {
   border: none;
-  background-color:#fff;
+  background-color: #fff;
   color: #000;
   padding: 10px;
   align-content: center;
-  border-radius:4px;
+  border-radius: 4px;
   margin: 10px auto 20px auto;
   display: block;
   cursor: pointer;
@@ -122,10 +162,10 @@ img{
 }
 
 
- .explore:hover {
-   transform: translateY(6px);
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
- }
+.explore:hover {
+  transform: translateY(6px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
 
 .skills-section {
   max-width: 700px;
@@ -156,7 +196,7 @@ img{
   background-color: #eee;
   border-radius: 20px;
   height: 20px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .progress {
@@ -167,39 +207,25 @@ img{
 
 /* Different colors for each skill */
 .progress.html {
-  background-color: #e44d26; /* HTML orange */
+  background-color: #e44d26;
+  /* HTML orange */
 }
 
 .progress.css {
-  background-color: #264DE4; /* CSS blue */
+  background-color: #264DE4;
+  /* CSS blue */
 }
 
 .progress.js {
-  background-color: #f0db4f; /* JS yellow */
+  background-color: #f0db4f;
+  /* JS yellow */
 }
+
 .progress.bootstrap {
-  background-color: #4FF119; /* JS yellow */
+  background-color: #4FF119;
+  /* JS yellow */
 }
 
-
-  .hero-section{
-  background-color:#000;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding: 20px;
-}
-
-img{
- width: 100%;
-}
-.text h2{
- font-size: 30px;
-} 
-.text p{
-  font-size: 18px;
-}
-}
 
 
 
@@ -222,13 +248,12 @@ img{
   gap: 30px;
   background-color: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
 .project-card img {
   width: 50%;
-  object-fit: cover;
   border-right: 1px solid #ddd;
 }
 
@@ -395,6 +420,7 @@ img{
   margin: 15px 0;
   line-height: 1.6;
 }
+
 .fixed-cta {
   position: fixed;
   bottom: 30px;
@@ -405,7 +431,7 @@ img{
   border-radius: 50px;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, transform 0.3s ease;
   z-index: 1000;
 }
@@ -470,24 +496,41 @@ footer {
 }
 
 /* Responsive - stack vertically on small screens */
-@media (max-width: 700px) {
+@media only screen and (max-width: 600px) {
   
   
-  .text{
- width: 100%;
-}
+  /*nav ul {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: 100vh;
+    padding-top: 50px;
+  }
   
-  img{
-  width: 100%;
-}
+  nav ul li{
+    display: block;
+    margin: 20px;
+  }*/
+  
+  .text {
+    width: 100%;
+  }
+  
+  img {
+    width: 100%;
+  }
   
   .project-card {
     flex-direction: column;
   }
+  
   .project-card img,
   .project-info {
     width: 100%;
   }
+  
   .project-card img {
     border-right: none;
     border-bottom: 1px solid #ddd;
@@ -498,17 +541,72 @@ footer {
     flex-direction: column;
     text-align: center;
   }
+  
   .footer-left,
   .footer-center,
   .footer-right {
     margin: 10px 0;
   }
+  
   .footer-nav {
     flex-direction: column;
     gap: 10px;
   }
+  
   .social-links a {
     display: inline-block;
     margin: 5px 10px;
   }
 }
+
+      @media screen and (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-list {
+                position: fixed;
+                top: 70px;
+                left: -280px;
+                width: 280px;
+                height: calc(100vh - 70px);
+                background-color: #fff;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                transition: left 0.3s ease;
+                padding-top: 30px;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+
+            .nav-list.active {
+                left: 0;
+            }
+
+            .list {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            .list li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 15px 20px;
+                font-size: 20px;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+            }
+
+            .hire-btn {
+                margin: 30px 0;
+                margin-left: 0;
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
